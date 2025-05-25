@@ -7,8 +7,8 @@ import java.util.Scanner;
 
 public class Main {
 
-    int[] tablica = new int[10];
-    public int readNumber() throws NegativeNumberException {
+    static int[] tablica = new int[10];
+    public static int readNumber() throws NegativeNumberException {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Podaj liczbe");
         int liczba = scanner.nextInt();
@@ -18,8 +18,23 @@ public class Main {
         return liczba;
     }
 
+    public static void fillArray() {
+        for (int i = 0; i < tablica.length; i++) {
+            try{
+                tablica[i]= readNumber();
+            } catch (NegativeNumberException e) {
+                tablica[i] = 0;
+                System.out.println(e.getMessage());
+            }
+        }
 
-    public static void main(String[] args) {
+        for (int liczba : tablica){
+            System.out.println(liczba + ", ");
+        }
+    }
+
+
+    public static <NumberArrayHandler> void main(String[] args) {
         ArrayList<Car> cars = new ArrayList<>();
 
         cars.add(new Car("Mercedes",2020));
@@ -41,7 +56,7 @@ public class Main {
 
         //---------------------------zadanie 4--------------------------
         System.out.println("----------------------Zadanie 4 ------------------------------");
-
+        fillArray();
 
 }
 }
